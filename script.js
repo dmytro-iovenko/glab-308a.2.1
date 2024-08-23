@@ -25,3 +25,14 @@ adventurer.inventory.forEach((item) => {
 adventurer.roll()
 adventurer.roll()
 adventurer.roll()
+
+// Character class, which defines generic character entities
+class Character {
+    constructor (name) {
+      this.name = name;
+      // character's health is standardized to a maximum of 100
+      this.health = 100;
+      // generic character starts with an empty inventory.
+      this.inventory = [];
+    }
+  }
