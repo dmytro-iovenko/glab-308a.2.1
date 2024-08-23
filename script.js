@@ -57,6 +57,14 @@ class Adventurer extends Character {
   }
 }
 
+// Companion class with properties and methods specific to the companions
+class Companion extends Character {
+  constructor(name, type) {
+    super(name);
+    this.type = type;
+  }
+}
+
 // re-create Robin using the Character class
 const robin = new Character("Robin");
 robin.inventory = ["sword", "potion", "artifact"];
