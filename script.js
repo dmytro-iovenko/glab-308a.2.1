@@ -1,30 +1,30 @@
-const adventurer = {
-  name: "Robin",
-  health: 10,
-  inventory: ["sword", "potion", "artifact"],
-  companion: {
-    name: "Leo",
-    type: "Cat",
-    companion: {
-      name: "Frank",
-      type: "Flea",
-      inventory: ["small hat", "sunglasses"],
-    },
-  },
-  roll(mod = 0) {
-    const result = Math.floor(Math.random() * 20) + 1 + mod;
-    console.log(`${this.name} rolled a ${result}.`);
-  },
-};
+// const adventurer = {
+//   name: "Robin",
+//   health: 10,
+//   inventory: ["sword", "potion", "artifact"],
+//   companion: {
+//     name: "Leo",
+//     type: "Cat",
+//     companion: {
+//       name: "Frank",
+//       type: "Flea",
+//       inventory: ["small hat", "sunglasses"],
+//     },
+//   },
+//   roll(mod = 0) {
+//     const result = Math.floor(Math.random() * 20) + 1 + mod;
+//     console.log(`${this.name} rolled a ${result}.`);
+//   },
+// };
 
-adventurer.inventory.forEach((item) => {
-  console.log(`${adventurer.name} has ${item} in his inventory.`);
-});
+// adventurer.inventory.forEach((item) => {
+//   console.log(`${adventurer.name} has ${item} in his inventory.`);
+// });
 
 // Test roll method by calling it a few times
-adventurer.roll();
-adventurer.roll();
-adventurer.roll();
+// adventurer.roll();
+// adventurer.roll();
+// adventurer.roll();
 
 // Character class, which defines generic character entities
 class Character {
@@ -40,3 +40,18 @@ class Character {
     console.log(`${this.name} rolled a ${result}.`);
   }
 }
+
+// re-create Robin using the Character class
+const robin = new Character("Robin");
+robin.inventory = ["sword", "potion", "artifact"];
+robin.companion = new Character("Leo");
+robin.companion.type = "Cat";
+robin.companion.companion = new Character("Frank");
+robin.companion.companion.type = "Flea";
+robin.companion.companion.inventory = ["small hat", "sunglasses"];
+
+robin.inventory.forEach((item) => {
+  console.log(`${robin.name} has ${item} in his inventory.`);
+});
+
+robin.roll();
