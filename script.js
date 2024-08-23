@@ -32,7 +32,7 @@ class Character {
   constructor(name) {
     this.name = name;
     // character's health is standardized to a maximum of 100
-    this.health = 100;
+    this.health = Character.MAX_HEALTH;
     // generic character starts with an empty inventory.
     this.inventory = [];
   }
@@ -70,8 +70,29 @@ class Companion extends Character {
   }
 }
 
-// re-create Robin using the Character class
-const robin = new Adventurer("Robin");
+// Factory function to generate adventurers with specific role
+class AdventurerFactory {  
+    constructor (role) {
+      this.role = role;
+      this.adventurers = [];
+    }
+    generate (name) {
+      const newAdventurer = new Adventurer(name, this.role);
+      this.adventurers.push(newAdventurer);
+      return newAdventurer;
+    }
+    findByIndex (index) {
+      return this.adventurers[index];
+    }
+    findByName (name) {
+      return this.adventurers.find((a) => a.name === name);
+    }
+  }
+
+// Create "healer factory"
+const healers = new AdventurerFactory("Healer");
+// Create Robin's character as a healer
+const robin = healers.generate("Robin");
 robin.inventory = ["sword", "potion", "artifact"];
 robin.companion = new Companion("Leo", "Cat");
 robin.companion.companion = new Character("Frank", "Flea");
