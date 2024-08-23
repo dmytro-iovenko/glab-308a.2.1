@@ -41,6 +41,22 @@ class Character {
   }
 }
 
+// Adventurer class with properties and methods specific to adventurers
+class Adventurer extends Character {
+  constructor(name, role) {
+    super(name);
+    // Adventurers have specialized roles.
+    this.role = role;
+    // Every adventurer starts with a bed and 50 gold coins.
+    this.inventory.push("bedroll", "50 gold coins");
+  }
+  // Adventurers have the ability to scout ahead of them.
+  scout() {
+    console.log(`${this.name} is scouting ahead...`);
+    super.roll();
+  }
+}
+
 // re-create Robin using the Character class
 const robin = new Character("Robin");
 robin.inventory = ["sword", "potion", "artifact"];
@@ -55,3 +71,5 @@ robin.inventory.forEach((item) => {
 });
 
 robin.roll();
+robin.companion.roll();
+robin.companion.companion.roll();
