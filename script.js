@@ -28,6 +28,7 @@
 
 // Character class, which defines generic character entities
 class Character {
+  static MAX_HEALTH = 100;
   constructor(name) {
     this.name = name;
     // character's health is standardized to a maximum of 100
@@ -43,9 +44,13 @@ class Character {
 
 // Adventurer class with properties and methods specific to adventurers
 class Adventurer extends Character {
+  static ROLES = ["Fighter", "Healer", "Wizard"];
   constructor(name, role) {
     super(name);
     // Adventurers have specialized roles.
+    if (!Adventurer.ROLES.includes(role)) {
+      throw new Error(`${role} role should match one of predifined roles: [${Adventurer.ROLES.join(", ")}]`);
+    }
     this.role = role;
     // Every adventurer starts with a bed and 50 gold coins.
     this.inventory.push("bedroll", "50 gold coins");
